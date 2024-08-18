@@ -1,0 +1,1549 @@
+@use "variables/mixins.scss" as *;
+@use "variables/components/buttons" as *;
+@use "variables/components/inputs" as *;
+@use "variables/components/titles" as *;
+@use "systems/systems-nested-main-pages" as *;
+@use "systems/Nested-pages/systems-nested-pages" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+html,
+body {
+    background-color: #fcfcfc;
+    font-family: "Cairo", sans-serif;
+}
+:root {
+    --primary-color: #07d8a6;
+    --gray-color: #bc9a80;
+    --white-color: white;
+    --black-color: black;
+    --title-color: black;
+    --NavBar-color: white;
+    --box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.5);
+    --box-shadowTwo: 0px 2px 6px #00000029;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+    color: var(--black-color) !important;
+}
+input:not([type="select"]) {
+    font-size: 20px;
+}
+section {
+    margin-bottom: 80px;
+    min-height: 63vh;
+}
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 48;
+    color: white;
+    margin-left: 10px;
+    font-size: 30px;
+}
+.max-width {
+    width: 85%;
+    margin: auto;
+}
+/*########################################## Header start ##########################################################*/
+header {
+    @include header;
+}
+/*########################################## Header End ##########################################################*/
+
+/*#################################### mapContainer section Stare ##############################################*/
+#mapContainer {
+    & .max-width {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        #map {
+            width: 85vw;
+            height: 65vh;
+            margin: 30px auto;
+            border-radius: 5px;
+        }
+        & #SaveLocationButton {
+            @include button;
+            width: 30%;
+        }
+    }
+}
+/*#################################### mapContainer section End ##############################################*/
+
+/*########################################## overLay Start ##########################################################*/
+.overLay {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    background-color: #000000c9;
+    backdrop-filter: blur(5px);
+    z-index: 16;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    & .container {
+        width: 35vw;
+        background-color: white;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        flex-direction: column;
+        position: relative;
+        & img {
+            height: 120px;
+        }
+        & h2 {
+            margin: 40px 0;
+            color: var(--gray-color) !important;
+            text-align: center;
+        }
+        & a {
+            @include button;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        & .cancel {
+            position: absolute;
+            background-color: gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+            left: 10px;
+            top: 10px;
+            & span {
+                font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0,
+                    "opsz" 48;
+                color: white;
+                font-size: 30px;
+                margin: 0;
+            }
+        }
+    }
+}
+/*########################################## overLay End ##########################################################*/
+
+/*#################################### first Page Start ##############################################*/
+.mainPage {
+
+    & .mainPageImgs {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        & .max-width{
+            width: 85%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        & .container {
+            border-radius: 15px;
+            width: 90%;
+            & .img-cont {
+                display: flex;
+                flex-direction: row-reverse;
+                overflow: hidden;
+                border-radius: 15px;
+                & img {
+                    width: 100%;
+                    height: 71vh;
+                    display: block;
+                    transition: 3s;
+                }
+            }
+        }
+        & .bullets {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            flex-direction: row-reverse;
+            & li {
+                height: 15px;
+                width: 15px;
+                background-color: #babfbc;
+                margin: 10px;
+                border-radius: 50%;
+                transition: 1s;
+                &.active {
+                    width: 50px;
+                    border-radius: 10px;
+                    background-color: var(--primary-color) !important;
+                }
+            }
+        }
+    }
+
+
+    & .cards {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & .title {
+            font-size: 35px;
+            color: var(--gray-color) !important;
+            margin-bottom: 50px;
+        }
+        & img {
+            height: 50px;
+        }
+        & .cards-container {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            flex-wrap: wrap;
+            row-gap: 35px;
+            column-gap: 20px;
+            & .card {
+                height: 300px;
+                width: 265px;
+                box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.5);
+                border-radius: 15px;
+                position: relative;
+                & img:first-child {
+                    width: 100%;
+                    height: 55%;
+                    border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;
+                }
+                & img:last-child {
+                    position: absolute;
+                    left: 50%;
+                    top: 43%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+                    border: 10px solid white;
+                    height: 160px;
+                    width: 160px;
+                }
+                & h3 {
+                    display: flex;
+                    justify-content: center;
+                    margin-top: 60px;
+                    color: var(--gray-color) !important;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    & .teachers-container {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    & .data {
+        display: flex;
+        justify-content: center;
+        margin-top: 80px;
+        flex-direction: column;
+        align-items: center;
+        & h2 {
+            color: var(--gray-color) !important;
+            font-size: 30px;
+        }
+        & .container {
+            display: flex;
+            justify-content: space-around;
+            width: 60%;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            row-gap: 100px;
+            & .box {
+                width: 200px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                & div {
+                    height: 125px;
+                    width: 125px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: white;
+                    border-radius: 66%;
+                    margin-top: 35px;
+                    box-shadow: 0px 0px 12px -5px rgba(0, 0, 0, 0.5);
+                    position: relative;
+                    & h4 {
+                        color: var(--primary-color) !important;
+                        font-size: 34px;
+                    }
+                    & img {
+                        position: absolute;
+                        width: 180%;
+                        left: 53%;
+                        top: 55%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+        }
+    }
+}
+/*#################################### first Page End ##############################################*/
+
+/*#################################### Third Page start ##############################################*/
+.systems {
+    & .max-width {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        & .title {
+            @include mainTitle;
+        }
+
+        & .boxes-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            & > .box {
+                width: 100%;
+
+                & .main {
+                    display: flex;
+                    padding: 15px;
+                    box-shadow: 0px 2px 6px -2px #0000006b;
+                    border: 1px solid #0000000a;
+                    border-radius: 15px;
+                    justify-content: space-between;
+                    cursor: pointer;
+                    width: 75%;
+                    margin: auto;
+                    align-items: center;
+                    flex-direction: row-reverse;
+                }
+
+                & .right {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: row-reverse;
+                    & .material-symbols-outlined {
+                        font-size: 32px;
+                        color: var(--gray-color) !important;
+                    }
+                    h2 {
+                        font-weight: 500;
+                        color: black;
+                    }
+                    img {
+                        margin-left: 10px;
+                    }
+                }
+                & i {
+                    margin-left: 15px;
+                    color: var(--gray-color) !important;
+                    font-size: 40px;
+                }
+                & .material-symbols-outlined {
+                    font-variation-settings: "FILL" 1, "wght" 1000;
+                    color: var(--primary-color) !important;
+                    font-size: 55px;
+                }
+            }
+        }
+    }
+}
+/*#################################### Third Page end ##############################################*/
+
+/*#################################### fourth Page start ############################################*/
+.technical-support .max-width {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+    }
+    & h2 {
+        font-weight: 500;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    & .container {
+        width: 100%;
+        margin-top: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        & .right {
+            width: 50%;
+            & form {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                align-items: center;
+                margin: auto;
+                & input {
+                    @include inputs;
+                    width: 100%;
+                }
+                & input:first-child {
+                    height: 60px;
+                }
+                & textarea {
+                    @include inputs;
+                    height: 230px !important;
+                    width: 100%;
+                    resize: none;
+                    padding: 27px 10px;
+                    &::-webkit-input-placeholder {
+                        position: absolute;
+                        right: 20px;
+                        top: 25px;
+                    }
+                }
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+                & button {
+                    @include button;
+                }
+            }
+        }
+    }
+}
+/*#################################### fourth Page end ##############################################*/
+
+/*#################################### Fifth Page start ##############################################*/
+.Frequently-Asked-Questions .max-width {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+    }
+    & .boxes-cont {
+        width: 60%;
+        min-width: 390px;
+        & .box {
+            margin-bottom: 30px;
+            box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.4196078431);
+            border-radius: 15px;
+            & .material-symbols-outlined {
+                font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0,
+                    "opsz" 48;
+            }
+            &.checked {
+                & .con {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 80%;
+                        height: 1px;
+                        background-color: #4a4a4a5e;
+                        left: 50%;
+                        top: 100%;
+                        transform: translate(-50%, -50%);
+                    }
+                    & .lift {
+                        & i {
+                            transition: 1s;
+                            transform: rotateZ(180deg);
+                        }
+                    }
+                }
+            }
+            & i {
+                transition: 1s;
+                transform: rotateZ(0);
+            }
+            & .con {
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                justify-content: space-between;
+                cursor: pointer;
+                position: relative;
+                & .right {
+                    display: flex;
+                    align-items: center;
+                    & h3 {
+                        margin-right: 20px;
+                    }
+                    & i {
+                        color: var(--white-color) !important;
+                        margin: 0;
+                        font-size: 35px;
+                        background-color: var(--gray-color);
+                        padding: 10px;
+                        border-radius: 50%;
+                    }
+                }
+                & .lift {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    & i {
+                        color: var(--primary-color) !important;
+                        margin: 0;
+                        font-size: 45px;
+                    }
+                }
+            }
+            & .opened {
+                max-height: 0;
+                padding: 0 25px;
+                overflow: hidden;
+                text-align: end;
+                transition: 1s;
+                & p {
+                    text-align: start;
+                }
+            }
+        }
+    }
+}
+/*#################################### Fifth Page end ##############################################*/
+
+/*#################################### sixth Page start ##############################################*/
+.call-us {
+    & .max-width {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        & .title {
+            @include mainTitle;
+        }
+        & .subTitle {
+            @include subTitle;
+        }
+        & .mainBox {
+            width: 65%;
+            min-width: 400px;
+            padding: 25px 50px;
+            box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.4196078431);
+            margin: 30px 0;
+            border-radius: 15px;
+            & form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                & input {
+                    @include inputs;
+                    height: 70px;
+                    margin-bottom: 15px;
+                    width: 100%;
+                }
+                & textarea {
+                    @include inputs;
+                    height: 230px !important;
+                    width: 100%;
+                    resize: none;
+                    padding: 27px 10px;
+                    &::-webkit-input-placeholder {
+                        position: absolute;
+                        right: 20px;
+                        top: 25px;
+                    }
+                }
+                & button {
+                    @include button;
+                }
+            }
+        }
+        & .socialLinks {
+            display: flex;
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            margin-top: 35px;
+            border-radius: 15px;
+            & > a {
+                background-color: var(--gray-color) !important;
+                width: 60px;
+                height: 60px;
+                border-radius: 23px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0px 10px;
+                & i {
+                    color: var(--white-color);
+                    font-size: 30px;
+                }
+            }
+        }
+    }
+}
+/*#################################### sixth Page end ##############################################*/
+
+/*#################################### login Page start ##############################################*/
+.loginPage .max-width,
+.createAccount .max-width {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+    }
+    & .container {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        gap: 30px;
+        & > img {
+            width: 34vw;
+            height: 50vh;
+            min-width: 265px;
+        }
+        & .right {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            flex: 1 1;
+            max-width: 550px;
+            min-width: 370px;
+            & form {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                & .cont {
+                    position: relative;
+                    & i {
+                        position: absolute;
+                        z-index: 2;
+                        top: 12px;
+                        right: 10px;
+                        & .material-symbols-outlined {
+                            height: 30px;
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+                & .password {
+                    & i:nth-child(3) {
+                        left: 10px;
+                        right: unset;
+                        font-size: 23px;
+                        top: 16px;
+                        cursor: pointer;
+                        color: var(--primary-color);
+                    }
+                }
+                & input {
+                    @include inputs;
+                    display: block;
+                    width: 100%;
+                    height: 55px;
+                    position: relative;
+                    padding-right: 45px;
+                    font-size: 20px;
+                }
+                & > div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    flex-direction: row-reverse;
+                    & a {
+                        color: var(--primary-color);
+                        font-size: 17px;
+                    }
+                    & > div {
+                        display: flex;
+                        align-items: center;
+                        flex-direction: row-reverse;
+                        & label {
+                            color: var(--primary-color);
+                            font-size: 18px;
+                        }
+                        & input {
+                            display: inline-block;
+                            margin: 0;
+                            margin-left: 15px;
+                            width: 20px;
+                            color: brown;
+                            accent-color: var(--primary-color);
+                        }
+                    }
+                }
+                & .button {
+                    @include button;
+                    margin: 20px 0;
+                    color: #ffffffc7;
+                    align-self: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+            & h3 {
+                font-weight: 500;
+                text-align: center;
+                & a {
+                    text-decoration: revert;
+                    color: var(--primary-color);
+                }
+            }
+        }
+    }
+}
+/*#################################### login Page End ##############################################*/
+
+/*#################################### createAccount Page Start ##############################################*/
+.createAccount .max-width {
+    & .container {
+        flex: 1 1;
+        & > img {
+            width: 34vw;
+            height: 40vh;
+            min-width: 265px;
+            align-self: center;
+        }
+        & form {
+            display: flex;
+            flex: 1 1;
+            justify-content: center;
+            & .right {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                width: 25%;
+                border-radius: 15px;
+                position: relative;
+                min-width: 300px;
+                max-width: 450px;
+                flex: 1 1;
+                padding: 25px;
+                & .cont {
+                    position: relative;
+                    width: 90%;
+                    & i {
+                        position: absolute;
+                        z-index: 2;
+                        top: 12px;
+                        right: 10px;
+                        & .material-symbols-outlined {
+                            height: 30px;
+                            color: var(--primary-color);
+                        }
+                    }
+                    & input {
+                        @include inputs;
+                        display: block;
+                        width: 100%;
+                        height: 55px;
+                        position: relative;
+                        padding-right: 45px;
+                        font-size: 20px;
+                    }
+                }
+                & .password {
+                    & i:nth-child(3) {
+                        left: 10px;
+                        right: unset;
+                        font-size: 23px;
+                        top: 18px;
+                        cursor: pointer;
+                        color: var(--primary-color);
+                    }
+                }
+                & > .button {
+                    @include button;
+                    width: auto;
+                    padding: 19px;
+                    display: flex;
+                    align-items: center;
+                    // pointer-events: none;
+                    // opacity: 0.5;
+                }
+            }
+        }
+    }
+}
+/*#################################### createAccount Page End ##############################################*/
+
+/*#################################### passwordRest Page Start ##############################################*/
+.passwordReset .max-width {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+    }
+    @at-root .passwordReset .container,
+        .newPassword .container,
+        .verification .container {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 25px;
+        & > img {
+            width: 34vw;
+            height: 40vh;
+            min-width: 265px;
+            align-self: center;
+        }
+        & .right {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-width: 260px;
+            flex: 1 1;
+            & h2 {
+                font-size: 22px;
+                font-weight: 500;
+                margin-bottom: 40px;
+            }
+            & .cont {
+                position: relative;
+                width: 100%;
+                max-width: 400px;
+                & i {
+                    position: absolute;
+                    z-index: 2;
+                    top: 16px;
+                    right: 10px;
+                    & .material-symbols-outlined {
+                        height: 30px;
+                        color: var(--primary-color);
+                    }
+                }
+                & input {
+                    @include inputs;
+                    display: block;
+                    width: 100%;
+                    height: 65px;
+                    position: relative;
+                    padding-right: 45px;
+                    font-size: 20px;
+                }
+            }
+            & .button {
+                @include button;
+                margin-top: 20px;
+                color: #ffffffc7;
+                align-self: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 150px;
+            }
+        }
+    }
+    & .right {
+        & form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            min-width: 260px;
+            flex: 1 1;
+        }
+    }
+}
+/*#################################### passwordRest Page End ##############################################*/
+
+/*################################### verification Page Start #############################################*/
+.verification .max-width {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+    }
+    & .container {
+        & .right {
+            justify-content: space-evenly;
+            & .cont {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                & input {
+                    @include inputs;
+                    width: 50px;
+                    height: 55px;
+                    margin: 0;
+                }
+                input[type="number"]::-webkit-outer-spin-button,
+                input[type="number"]::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+            & .button {
+                margin-top: 40px;
+                pointer-events: none;
+                opacity: 0.5;
+            }
+        }
+    }
+}
+/*#################################### verification Page End ##############################################*/
+
+/*#################################### newPassword Page Start ##############################################*/
+.newPassword .max-width {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+    }
+    & .container {
+        & .right {
+            & .password {
+                & i:nth-child(3) {
+                    left: 10px;
+                    right: unset;
+                    font-size: 23px;
+                    top: 22px;
+                    cursor: pointer;
+                    color: var(--primary-color);
+                }
+            }
+            & .button {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+    }
+}
+/*#################################### newPassword Page End ##############################################*/
+
+/*#################################### account Page START ##############################################*/
+.account .max-width,
+.account-new-password .max-width {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+        margin: 30px 0;
+        font-size: 32px;
+    }
+    .container {
+        gap: 50px;
+        justify-content: center;
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        flex-wrap: wrap-reverse;
+        flex: 1 1;
+        & .lift {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: var(--box-shadowTwo);
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px;
+            min-width: 280px;
+            max-width: 600px;
+            flex: 1 1;
+            & .cont {
+                width: 80%;
+                position: relative;
+                & label {
+                    & p {
+                        position: absolute;
+                        z-index: 2;
+                        top: 17px;
+                        right: 46px;
+                        font-size: 17px;
+                        color: var(--primary-color) !important;
+                        cursor: text;
+                        font-weight: 582;
+                        font-family: arial;
+                    }
+                }
+                & i {
+                    position: absolute;
+                    z-index: 2;
+                    top: 15px;
+                    right: 10px;
+                    font-size: 25px;
+                    color: var(--primary-color) !important;
+                    margin: 0;
+                    cursor: text;
+                }
+                & > div {
+                    position: absolute;
+                    z-index: 2;
+                    left: 0px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    bottom: 25px;
+                    padding: 10px;
+                    border-radius: 15px;
+                    & img {
+                        height: 35px;
+                    }
+                }
+                & input {
+                    @include inputs;
+                    width: 100%;
+                    height: 55px;
+                    padding-right: 50px;
+                    @at-root .account .max-width .lift input {
+                        &::placeholder {
+                            color: var(--primary-color);
+                            font-size: 17px;
+                        }
+                    }
+                    &[type="date"] {
+                        font-size: 16px;
+                        font-family: arial;
+                        &::-webkit-inner-spin-button,
+                        &::-webkit-calendar-picker-indicator {
+                            filter: invert(1);
+                            appearance: none;
+                            display: none;
+                            -webkit-appearance: none;
+                        }
+                    }
+                    &[type="number"]::-webkit-outer-spin-button,
+                    &[type="number"]::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+                }
+            }
+            & .password {
+                & i:nth-child(3) {
+                    left: 10px;
+                    right: unset;
+                    font-size: 23px;
+                    top: 16px;
+                    cursor: pointer;
+                }
+            }
+            & button {
+                @include button;
+            }
+        }
+        & .right {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 25%;
+            border-radius: 15px;
+            box-shadow: var(--box-shadowTwo);
+            background-color: white;
+            position: relative;
+            min-width: 250px;
+            max-width: 350px;
+            flex: 1 1;
+            & img {
+                width: 100%;
+                height: 140px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+            & .userPhoto {
+                position: absolute;
+                top: 20px;
+                & img {
+                    border-radius: 50%;
+                    border: 5px solid white;
+                    height: 140px;
+                }
+                & label {
+                    & input {
+                        display: none;
+                    }
+                    & i {
+                        position: absolute;
+                        left: 15px;
+                        bottom: 15px;
+                        font-size: 25px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            & h2 {
+                margin: 25px 0;
+            }
+            & .cont {
+                display: flex;
+                position: relative;
+                width: 100%;
+                max-width: 400px;
+                padding: 10px 0;
+                padding-right: 12px;
+                align-items: center;
+                cursor: pointer;
+                background-color: transparent;
+                border: none;
+                &.active {
+                    background-color: #e3e3e3;
+                }
+                &:hover {
+                    background-color: #dcdddc61;
+                    transition: 0.2s;
+                }
+                & .material-symbols-outlined {
+                    font-size: 35px;
+                    color: var(--primary-color) !important;
+                    margin: 0;
+                }
+                & h3 {
+                    margin-right: 10px;
+                    font-weight: 500;
+                    color: black;
+                    font-family: "Cairo", sans-serif;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+/*#################################### account Page End ##############################################*/
+
+/*#################################### account-new-password Page Start ##############################################*/
+.account-new-password .max-width {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & .title {
+        @include mainTitle;
+    }
+    .container {
+        align-items: center;
+        & form {
+            width: 55%;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            & .lift {
+                gap: 30px;
+                & .cont {
+                    & input {
+                        margin: 0;
+                    }
+                }
+                & button {
+                    @include button;
+                    opacity: 0.5;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
+/*#################################### account-new-password Page End ##############################################*/
+
+/*#################################### alarm Page start ##############################################*/
+.alarm {
+    display: flex;
+    & .max-width {
+        width: 85%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & .container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 40px;
+            & h1 {
+                text-align: center;
+            }
+            & a {
+                @include button;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}
+/*#################################### alarm Page End ##############################################*/
+
+/*#################################### footer section Start ############################################*/
+footer {
+    @include footer;
+}
+/*#################################### footer section End ##############################################*/
+
+/*######################################## responsive style #############################################*/
+@media screen and (max-width: 600px) {
+    /* Styles for screens that are 600px wide or less */
+    header {
+        & .right {
+            & .links_container ul {
+                flex-direction: column;
+                max-height: 400px !important;
+                align-items: center;
+                & li {
+                    position: relative;
+                    margin: 5px 0;
+                    &.active a:after {
+                        content: "";
+                        height: 15px;
+                        width: 15px;
+                        right: -29px;
+                        bottom: 15px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+
+        & .icons {
+            gap: 10px;
+        }
+    }
+
+    .overLay .container {
+        width: 75vw;
+    }
+
+    .mainPage {
+        & .mainPageImgs img {
+            height: 50vh !important;
+        }
+
+        & .data .container {
+            row-gap: 45px;
+            width: 100%;
+        }
+    }
+
+    .systems .max-width .boxes-container > .box {
+        & .main {
+            width: 100%;
+            max-width: 450px;
+        }
+        & .right h2 {
+            font-size: 20px;
+        }
+    }
+
+    .technical-support .max-width {
+        & .container {
+            & .lift img {
+                height: clamp(280px, 250px, 200px);
+                width: clamp(280px, 250px, 200px);
+            }
+            & .right {
+                min-width: 340px;
+                margin-left: auto;
+                display: flex;
+                flex: 1 1;
+                justify-content: center;
+            }
+        }
+    }
+
+    .Frequently-Asked-Questions .max-width .boxes-cont {
+        min-width: 360px;
+        & .box .con {
+            padding: 20px 10px;
+            & .right {
+                & span {
+                    padding: 9px !important;
+                    font-size: 27px !important;
+                }
+                & h3 {
+                    font-size: 17px;
+                }
+            }
+            & .lift span {
+                font-size: 50px;
+            }
+        }
+    }
+
+    .call-us .max-width {
+        & .mainBox {
+            width: 100%;
+            padding: 25px;
+            min-width: 345px;
+        }
+        & .socialLinks > a img {
+            height: 25px;
+        }
+    }
+
+    .account .max-width .container .lift,
+    .account-new-password .max-width .container .lift {
+        padding: 40px 20px;
+        max-width: 400px;
+        & .cont {
+            width: 100%;
+        }
+    }
+
+    .account-new-password .max-width .container form {
+        width: auto;
+    }
+
+    .loginPage .max-width .container > img,
+    .createAccount .max-width .container > img {
+        height: 30vh;
+    }
+
+    .createAccount .max-width .container form {
+        justify-content: center;
+    }
+
+    .passwordReset .container > img,
+    .newPassword .container > img,
+    .verification .container > img {
+        height: 30vh;
+    }
+
+    .alarm {
+        & .max-width {
+            & .container {
+                & a {
+                    width: auto;
+                    padding: 0 20px;
+                }
+            }
+        }
+    }
+
+    footer p {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    /* Styles for screens that are between 601px and 900px wide */
+    header .right .links_container {
+        & ul {
+            flex-direction: column;
+            max-height: 400px !important;
+            align-items: center;
+            & li {
+                position: relative;
+                margin: 5px 0;
+                &.active a:after {
+                    content: "";
+                    height: 15px;
+                    width: 15px;
+                    right: -29px;
+                    bottom: 15px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .photos-slider {
+        & .mainPageImgs {
+            & img {
+                height: 50vh !important;
+            }
+        }
+        & .cards .cards-container .card {
+            margin: 10px;
+            width: 230px;
+            & img:last-child {
+                position: absolute;
+                left: 50%;
+                top: 38%;
+                border-radius: 50%;
+                height: 150px;
+                width: 150px;
+            }
+        }
+    }
+
+    .overLay .container {
+        width: 50vw;
+    }
+
+    .mainPage {
+        & .mainPageImgs {
+            & img {
+                height: 50vh !important;
+            }
+        }
+        & .cards .cards-container .card {
+            margin: 10px;
+            width: 230px;
+            & img:last-child {
+                position: absolute;
+                left: 50%;
+                top: 38%;
+                border-radius: 50%;
+                height: 150px;
+                width: 150px;
+            }
+        }
+        & .data .container {
+            width: 100%;
+        }
+    }
+
+    .packeges .max-width .packages-cont,
+    .packeges .max-width .packages-cont-second {
+        & .left-box,
+        & .mid-box,
+        & .right-box {
+            max-width: 450px;
+        }
+    }
+
+    .technical-support .max-width .container {
+        & .lift img {
+            height: clamp(280px, 250px, 200px);
+            width: clamp(280px, 250px, 200px);
+        }
+        & .right {
+            min-width: 460px;
+            max-width: 560px;
+            flex: 1;
+            margin-top: 25px;
+            & form {
+                margin: auto;
+            }
+        }
+    }
+
+    .Frequently-Asked-Questions .max-width .boxes-cont {
+        width: 80%;
+    }
+
+    .account .max-width .container .lift,
+    .account-new-password .max-width .container .lift {
+        padding: 40px 20px;
+        & .cont {
+            width: 100%;
+        }
+    }
+
+    .account-new-password .max-width .container form {
+        width: auto;
+    }
+
+    .loginPage .max-width .container > img,
+    .createAccount .max-width .container > img {
+        height: 30vh;
+    }
+
+    .createAccount .max-width .container form {
+        justify-content: center;
+    }
+
+    .passwordReset .container > img,
+    .newPassword .container > img,
+    .verification .container > img {
+        height: 30vh;
+    }
+
+    .cart .max-width .container > .right .box .right .img {
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width: 1195px) {
+    header .right .links_container {
+        & ul {
+            display: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            position: absolute;
+            right: -5px;
+            top: 67px;
+            background-color: var(--primary-color);
+            z-index: 10;
+            padding: 0;
+            max-height: 0;
+        }
+        & .burgerIcon {
+            display: block;
+        }
+    }
+    .packeges .max-width .packages-cont,
+    .packeges .max-width .packages-cont-second {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .packeges .max-width .packages-cont-second .boxes-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 1350px) {
+    header .icons {
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 2500px) {
+    header .icons {
+        max-width: 350px;
+    }
+
+    .mainPage {
+        & .cards .cards-container {
+            flex-wrap: wrap;
+            justify-content: center;
+            & .card {
+                margin: 10px;
+            }
+        }
+        & .data .container {
+            flex-wrap: wrap;
+            width: 100%;
+            & .box {
+                margin: 40px 20px;
+            }
+        }
+    }
+
+    .packeges .max-width .packages-cont,
+    .packeges .max-width .packages-cont-second {
+        justify-content: center;
+        & .left-box,
+        & .mid-box,
+        & .right-box {
+            width: 30%;
+            margin: 20px;
+            flex: 1 1;
+            & .price-cont {
+                // width: 97%;
+                min-width: 300px;
+            }
+        }
+    }
+}
